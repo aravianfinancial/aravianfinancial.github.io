@@ -183,6 +183,67 @@ footer { background: #070707; border-top: 1px solid var(--border); padding: 2.5r
   .form-trust { margin-top: 1.25rem; padding-top: 1.25rem; border-top: 1px solid var(--border); display: flex; flex-direction: column; gap: 0.4rem; }
   .trust-item { font-size: 0.72rem; color: var(--silver); opacity: 0.6; display: flex; align-items: center; gap: 0.5rem; }
   .trust-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
+
+  /* ── LP Hamburger Nav — hidden on desktop, shown <=545px ── */
+  .lp-nav { position: relative; }
+  .lp-nav-hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 4px;
+    flex-shrink: 0;
+  }
+  .lp-nav-hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: #fff;
+    border-radius: 2px;
+  }
+  .lp-mobile-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0; right: 0;
+    background: rgba(8,8,8,0.97);
+    padding: 1.5rem 2rem;
+    border-bottom: 1px solid #2a2a2a;
+    flex-direction: column;
+    gap: 0;
+    z-index: 300;
+  }
+  .lp-mobile-menu.open { display: flex; }
+  .lp-mobile-menu a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.82rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.85rem 0;
+    border-bottom: 1px solid #1e1e1e;
+    font-weight: 500;
+    display: block;
+  }
+  .lp-mobile-menu a:last-child { border-bottom: none; }
+  .lp-mobile-apply {
+    margin-top: 0.75rem;
+    background: var(--accent) !important;
+    color: #111 !important;
+    text-align: center;
+    font-weight: 700 !important;
+    padding: 0.85rem 1rem !important;
+    border-bottom: none !important;
+    border-radius: 1px;
+  }
+  @media (max-width: 545px) {
+    .lp-nav-hamburger { display: flex; }
+    .lp-nav-right { display: none !important; }
+  }
+
 </style>
 </head>
 <body>
@@ -197,10 +258,11 @@ footer { background: #070707; border-top: 1px solid var(--border); padding: 2.5r
     <a href="https://aravianfinancial.my1003app.com/566937/register" class="btn-nav">Apply Now</a>
   
   </div>
-  <button class="lp-nav-hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+
+  <button class="lp-nav-hamburger" id="lpHamburger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
 </nav>
 <div class="lp-mobile-menu" id="lpMobileMenu">
-  <a href="programs.html">All Programs</a>
+  <a href="programs.html">&larr; All Programs</a>
   <a href="tel:+12817163215">281-716-3215</a>
   <a href="https://aravianfinancial.my1003app.com/566937/register" class="lp-mobile-apply">Apply Now</a>
 </div>
@@ -219,7 +281,50 @@ footer { background: #070707; border-top: 1px solid var(--border); padding: 2.5r
       <ul class="hero-bullets"><li>Medical Doctor (MD) / Doctor of Osteopathy (DO)</li><li>Dentist (DDS / DMD) / Doctor of Pharmacy (PharmD)</li><li>Ophthalmologist, Psychiatrist, Podiatrist (DPM), Veterinarian (VMD)</li><li>Certified Registered Nurse Anesthetist (CRNA)</li><li>Medical residents, fellows, and interns with qualifying degrees</li><li>Future income from a signed offer letter accepted</li></ul>
       <div class="hero-cta-group">
         <a href="#form" class="btn-primary">Check My Eligibility</a>
-        <a href="contact.html" class="btn-ghost" onclick="event.preventDefault(); Term Refinance</option>
+        <a href="contact.html" class="btn-ghost">Ask a Question</a>
+      </div></div>
+    
+    <div id="form">
+      <div class="form-card">
+  <div class="form-card-eyebrow">Get Started Today</div>
+  <div class="form-card-title">Let&rsquo;s Find Your Best Rate.</div>
+  <div class="form-card-sub">Fill out the form and Kris will reach out personally &mdash; typically the same business day.</div>
+  <form action="https://api.web3forms.com/submit" method="POST" id="lpForm" novalidate>
+  <input type="hidden" name="access_key" value="34b69a31-0018-47d0-bc0c-32372aa4a215">
+  <input type="hidden" name="subject" value="New Lead – Website – LP">
+  <input type="hidden" name="redirect" value="false">
+  <div class="form-row">
+    <div class="form-field">
+      <label for="lp-fname">First Name <span class="req">*</span></label>
+      <input type="text" id="lp-fname" name="first_name" placeholder="John" required />
+    </div>
+    <div class="form-field">
+      <label for="lp-lname">Last Name <span class="req">*</span></label>
+      <input type="text" id="lp-lname" name="last_name" placeholder="Smith" required />
+    </div>
+  </div>
+  <div class="form-field">
+    <label for="lp-email">Email Address <span class="req">*</span></label>
+    <input type="email" id="lp-email" name="email" placeholder="john@email.com" required />
+  </div>
+  <div class="form-field">
+    <label for="lp-phone">Phone Number <span class="req">*</span></label>
+    <input type="tel" id="lp-phone" name="phone" placeholder="(281) 555-0100" required />
+  </div>
+  <div class="form-field">
+    <label for="lp-program">Loan Program <span class="req">*</span></label>
+    <select id="lp-program" name="loan_program" required>
+      <option value="" disabled>Select a program&hellip;</option>
+      <option value="Conventional">Conventional Loan</option>
+      <option value="FHA">FHA Loan</option>
+      <option value="VA">VA Loan</option>
+      <option value="USDA">USDA Loan</option>
+      <option value="Jumbo">Jumbo Loan</option>
+      <option value="TSAHC DPA">TSAHC Down Payment Assistance</option>
+      <option value="Non-QM / Bank Statement">Non-QM / Bank Statement</option>
+      <option value="DSCR">DSCR Investment Loan</option>
+      <option value="Medical Professional" selected>Medical Professional Loan</option>
+      <option value="Rate &amp; Term Refinance">Rate &amp; Term Refinance</option>
       <option value="Cash-Out Refinance">Cash-Out Refinance</option>
       <option value="FHA Streamline">FHA Streamline Refinance</option>
       <option value="VA IRRRL">VA IRRRL</option>
@@ -229,18 +334,22 @@ footer { background: #070707; border-top: 1px solid var(--border); padding: 2.5r
   <div class="form-field form-consent">
     <label class="consent-label">
       <input type="checkbox" name="consent" id="lp-consent" required />
-      <span>By submitting this form, I consent to be contacted by Aravian Financial LLC via email, phone, and text message regarding my mortgage inquiry. Message and data rates may apply. I understand I may opt out at any time. <span class="req">*</span></span>
+      <span>By submitting this form, I consent to be contacted by Aravian Financial LLC via email,
+      phone, and text message regarding my mortgage inquiry. Message and data rates may apply.
+      I understand I may opt out at any time. <span class="req">*</span></span>
     </label>
   </div>
   <div class="form-result" id="lpResult"></div>
   <button type="submit" class="form-submit">Get My Rate &rarr;</button>
 </form>
-      <div class="form-trust">
-        <div class="trust-item"><span class="trust-dot"></span> Licensed Texas Mortgage Broker &nbsp;|&nbsp; NMLS #2691016</div>
-        <div class="trust-item"><span class="trust-dot"></span> Kris Syevens NMLS #566937</div>
-        <div class="trust-item"><span class="trust-dot"></span> No obligation &mdash; response within 1 business day</div>
-      </div>
+  <div class="form-trust">
+    <div class="trust-item"><span class="trust-dot"></span> Licensed Texas Mortgage Broker &nbsp;|&nbsp; NMLS #2691016</div>
+    <div class="trust-item"><span class="trust-dot"></span> Kris Syevens NMLS #566937</div>
+    <div class="trust-item"><span class="trust-dot"></span> No obligation &mdash; response within 1 business day</div>
+  </div>
+</div>
     </div>
+  </div>
       </div>
     </div>
   </div>
@@ -322,14 +431,51 @@ footer { background: #070707; border-top: 1px solid var(--border); padding: 2.5r
   });
   </script>
 <script>document.querySelectorAll(".copy-year").forEach(el => el.textContent = new Date().getFullYear());</script>
+
 <script>
-  // LP hamburger nav
-  const lpHam = document.querySelector('.lp-nav-hamburger');
-  const lpMenu = document.getElementById('lpMobileMenu');
-  if (lpHam && lpMenu) {
-    lpHam.addEventListener('click', () => {
-      lpMenu.classList.toggle('open');
+
+  // LP Form submission
+  (function() {
+    var form = document.getElementById('lpForm');
+    var result = document.getElementById('lpResult');
+    if (!form) return;
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      var btn = form.querySelector('.form-submit');
+      btn.textContent = 'Sending…'; btn.disabled = true;
+      try {
+        var res = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST', body: new FormData(form)
+        });
+        var data = await res.json();
+        if (data.success) {
+          result.className = 'form-result success';
+          result.textContent = 'Got it! Kris will reach out within 1 business day.';
+          form.reset();
+        } else {
+          result.className = 'form-result error';
+          result.textContent = 'Something went wrong. Please try again or call us directly.';
+        }
+      } catch(err) {
+        result.className = 'form-result error';
+        result.textContent = 'Something went wrong. Please try again or call us directly.';
+      }
+      btn.textContent = 'Get My Rate →'; btn.disabled = false;
     });
-  }</script>
+  })();
+
+
+  // LP hamburger toggle
+  (function() {
+    var ham = document.getElementById('lpHamburger');
+    var menu = document.getElementById('lpMobileMenu');
+    if (!ham || !menu) return;
+    ham.addEventListener('click', function() {
+      menu.classList.toggle('open');
+      ham.setAttribute('aria-expanded', menu.classList.contains('open'));
+    });
+  })();
+
+</script>
 </body>
 </html>
