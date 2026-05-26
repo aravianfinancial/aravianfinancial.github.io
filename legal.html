@@ -77,6 +77,71 @@
   .nav-apply-btn:hover {
     background: var(--accent-light);
   }
+
+  /* ── LARGE SCREEN MAX-WIDTH LOCK (> 1440px) ── */
+  .nav-inner,
+  .hero-content,
+  .section-inner,
+  .content-inner,
+  .faq-inner,
+  .calc-strip-inner,
+  .footer-inner { max-width: 1440px; margin-left: auto; margin-right: auto; }
+
+  @media (min-width: 1440px) {
+    /* Lock all section padding content to 1440px */
+    section > *:not(.hero-bg):not(.hero-grid):not(.hero-glow):not(.hero-photo-bg):not(.page-header-bg):not(.page-header-overlay),
+    .page-header-inner,
+    .intent-toggle-wrap .tabs,
+    .calc-panels,
+    .tabs-wrap {
+      max-width: 1440px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    nav {
+      max-width: 100%;
+    }
+    .nav-links {
+      gap: 2rem;
+    }
+    /* Constrain section padding so content doesn't stretch */
+    section { padding-left: calc((100vw - 1440px) / 2 + 4rem); padding-right: calc((100vw - 1440px) / 2 + 4rem); }
+    footer { padding-left: calc((100vw - 1440px) / 2 + 4rem); padding-right: calc((100vw - 1440px) / 2 + 4rem); }
+    .page-header { padding-left: calc((100vw - 1440px) / 2 + 4rem); padding-right: calc((100vw - 1440px) / 2 + 4rem); }
+    .cta-band { padding-left: calc((100vw - 1440px) / 2 + 4rem); padding-right: calc((100vw - 1440px) / 2 + 4rem); }
+    nav { padding-left: calc((100vw - 1440px) / 2 + 4rem); padding-right: calc((100vw - 1440px) / 2 + 4rem); }
+  }
+
+  
+  /* ── 1140px–1024px: tighten nav before collapse ── */
+  @media (max-width: 1140px) and (min-width: 1025px) {
+    nav { padding: 1rem 2.5rem; }
+    .nav-logo-img { height: 36px !important; }
+    .nav-links { gap: 1.25rem; }
+    .nav-links a { font-size: 0.63rem; letter-spacing: 0.1em; }
+    .nav-apply-btn { padding: 0.45rem 1rem; font-size: 0.63rem; letter-spacing: 0.1em; }
+  }
+
+  /* ── 1024px–900px: prevent nav collapse ── */
+  @media (max-width: 1024px) and (min-width: 901px) {
+    nav { padding: 1rem 2rem; }
+    .nav-logo-img { height: 34px !important; }
+    .nav-links { gap: 1.25rem; }
+    .nav-links a { font-size: 0.62rem; letter-spacing: 0.1em; }
+    .nav-apply-btn { padding: 0.45rem 1rem; font-size: 0.62rem; letter-spacing: 0.1em; }
+  }
+
+  /* ── Below 1024px: reduce logo 30% ── */
+  @media (max-width: 1024px) {
+    .nav-logo-img { height: 33px !important; }
+  }
+
+  /* ── Below 900px: hide standalone apply button (already in hamburger) ── */
+  @media (max-width: 900px) {
+    .nav-apply-btn { display: none !important; }
+    .nav-logo-img { height: 33px !important; }
+  }
+
 </style>
 </head>
 <body>
@@ -87,6 +152,7 @@
     <li><a href="index.html">Home</a></li>
     <li><a href="about.html">About</a></li>
     <li><a href="loan-programs.html">Loan Programs</a></li>
+    <li><a href="calculators.html">Calculators</a></li>
     <li><a href="contact.html">Contact</a></li>
   </ul>
   <a href="https://aravianfinancial.my1003app.com/566937/register" class="nav-apply-btn">Apply Now</a>
@@ -197,6 +263,13 @@
     }
   });
   }
+</script>
+<script src="https://viato.ai/embed.js"></script>
+<script>
+  ViatoForms.popup('abe72926-94cc-4783-ada9-57d440f7c244', {
+    primaryColor: '#b8a98a',
+    hideViatoBranding: true
+  });
 </script>
 </body>
 </html>
