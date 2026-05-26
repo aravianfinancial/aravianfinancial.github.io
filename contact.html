@@ -349,6 +349,106 @@ footer { background: #070707; border-top: 1px solid var(--border); padding: 3.5r
     flex-wrap: wrap;
     align-items: center;
   }
+
+  /* ── WEB3FORMS NATIVE FORM ── */
+  .w3f-wrap { display: flex; flex-direction: column; gap: 0; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+  .form-field { display: flex; flex-direction: column; margin-bottom: 1rem; }
+  .form-field label {
+    font-size: 0.65rem; font-weight: 700; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--silver); opacity: 0.75;
+    margin-bottom: 0.4rem;
+  }
+  .req { color: var(--accent); }
+  .form-field input[type="text"],
+  .form-field input[type="email"],
+  .form-field input[type="tel"],
+  .form-field select,
+  .form-field textarea {
+    background: #222; border: 1px solid var(--border);
+    color: var(--white); font-family: var(--font);
+    font-size: 0.95rem; padding: 0.75rem 1rem;
+    outline: none; transition: border-color 0.2s;
+    border-radius: 0; appearance: none; -webkit-appearance: none;
+    width: 100%;
+  }
+  .form-field input:focus,
+  .form-field select:focus,
+  .form-field textarea:focus { border-color: var(--accent); }
+  .form-field input::placeholder,
+  .form-field textarea::placeholder { color: #555; }
+  .form-field textarea { resize: vertical; min-height: 100px; }
+  .form-field select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23b8a98a' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+    background-repeat: no-repeat; background-position: right 1rem center;
+    padding-right: 2.5rem;
+  }
+  .form-consent { margin-bottom: 1.25rem; }
+  .consent-label { display: flex; align-items: flex-start; gap: 0.75rem; cursor: pointer; }
+  .consent-label input[type="checkbox"] {
+    width: 16px; height: 16px; min-width: 16px; margin-top: 3px;
+    accent-color: var(--accent); cursor: pointer;
+    background: #222; border: 1px solid var(--border);
+  }
+  .consent-label span {
+    font-size: 0.75rem; color: var(--silver); line-height: 1.7;
+    opacity: 0.7; text-transform: none; letter-spacing: 0; font-weight: 400;
+  }
+  .form-submit {
+    background: var(--accent); color: var(--off-black);
+    border: none; padding: 0.95rem 2rem; font-family: var(--font);
+    font-size: 0.82rem; font-weight: 700; letter-spacing: 0.14em;
+    text-transform: uppercase; cursor: pointer; width: 100%;
+    transition: background 0.2s; border-radius: 0;
+  }
+  .form-submit:hover { background: var(--accent-light); }
+  .form-result {
+    font-size: 0.88rem; padding: 0.75rem 1rem; margin-bottom: 0.75rem;
+    display: none; border-radius: 0;
+  }
+  .form-result.success { background: rgba(184,169,138,0.15); color: var(--accent); border: 1px solid var(--accent); display: block; }
+  .form-result.error { background: rgba(224,112,112,0.12); color: #e07070; border: 1px solid #e07070; display: block; }
+  @media (max-width: 600px) {
+    .form-row { grid-template-columns: 1fr; }
+  }
+  /* Contact page specific */
+  .contact-wrap {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 0;
+    max-width: 1440px;
+    margin: 0 auto;
+  }
+  .contact-form-col { order: 1; }
+  .contact-info-col { order: 2; }
+  /* View Loan Programs btn — match primary */
+  .btn-ghost-to-primary,
+  a.btn-ghost[href*="programs"],
+  button.btn-ghost { 
+    background: var(--accent) !important;
+    color: var(--off-black) !important;
+    border-color: var(--accent) !important;
+  }
+  .btn-ghost-to-primary:hover,
+  a.btn-ghost[href*="programs"]:hover { background: var(--accent-light) !important; }
+  /* Legal footer responsive */
+  @media (max-width: 768px) {
+    .footer-legal-links { flex-direction: column; gap: 0.5rem; }
+    .footer-legal-links span { display: none; }
+    .contact-wrap { grid-template-columns: 1fr; }
+    .contact-form-col { order: 1; }
+    .contact-info-col { order: 2; }
+  }
+  /* Max-width on all contact containers */
+  @media (min-width: 1440px) {
+    .page-header { padding-left: calc((100vw - 1440px) / 2 + 4rem); padding-right: calc((100vw - 1440px) / 2 + 4rem); }
+    .contact-wrap { padding-left: 0; padding-right: 0; }
+    .contact-form-col, .contact-info-col { padding-left: 4rem; padding-right: 4rem; }
+    nav { padding-left: calc((100vw - 1440px) / 2 + 4rem); padding-right: calc((100vw - 1440px) / 2 + 4rem); }
+    footer { padding-left: calc((100vw - 1440px) / 2 + 4rem); padding-right: calc((100vw - 1440px) / 2 + 4rem); }
+    .cta-band { padding-left: calc((100vw - 1440px) / 2 + 4rem); padding-right: calc((100vw - 1440px) / 2 + 4rem); }
+    .apply-strip { padding-left: calc((100vw - 1440px) / 2 + 4rem); padding-right: calc((100vw - 1440px) / 2 + 4rem); }
+  }
 </style>
 </head>
 <body>
@@ -462,18 +562,41 @@ footer { background: #070707; border-top: 1px solid var(--border); padding: 3.5r
       <h2 class="form-title">Tell Us About<br />Your Goals.</h2>
       <p class="form-sub">Fill out the form below and Kris will be in touch personally — typically within the same business day.</p>
     </div>
-    <div class="viato-trigger-wrap">
-      <p class="viato-trigger-sub">Click the button below to open the contact form. Kris will respond personally — typically the same business day.</p>
-      <button class="viato-trigger-btn" onclick="ViatoForms.open('abe72926-94cc-4783-ada9-57d440f7c244')">
-        Send Us a Message &rarr;
-      </button>
-      <div class="viato-trigger-trust">
-        <span>No obligation</span>
-        <span>&middot;</span>
-        <span>Response within 1 business day</span>
-        <span>&middot;</span>
-        <span>NMLS #2691016</span>
-      </div>
+    <div class="w3f-wrap"><form action="https://api.web3forms.com/submit" method="POST" id="contactForm" novalidate>
+  <input type="hidden" name="access_key" value="7ac4fdfc-aadc-4950-a4d1-cc0fe505e6ba">
+  <input type="hidden" name="subject" value="New Lead – Website – Contact Us">
+  <input type="hidden" name="redirect" value="false">
+  <div class="form-row">
+    <div class="form-field">
+      <label for="cf-fname">First Name <span class="req">*</span></label>
+      <input type="text" id="cf-fname" name="first_name" placeholder="John" required />
+    </div>
+    <div class="form-field">
+      <label for="cf-lname">Last Name <span class="req">*</span></label>
+      <input type="text" id="cf-lname" name="last_name" placeholder="Smith" required />
+    </div>
+  </div>
+  <div class="form-field">
+    <label for="cf-email">Email Address <span class="req">*</span></label>
+    <input type="email" id="cf-email" name="email" placeholder="john@email.com" required />
+  </div>
+  <div class="form-field">
+    <label for="cf-phone">Phone Number <span class="req">*</span></label>
+    <input type="tel" id="cf-phone" name="phone" placeholder="(281) 555-0100" required />
+  </div>
+  <div class="form-field">
+    <label for="cf-msg">Message <span class="req">*</span></label>
+    <textarea id="cf-msg" name="message" rows="4" placeholder="How can we help you?" required></textarea>
+  </div>
+  <div class="form-field form-consent">
+    <label class="consent-label">
+      <input type="checkbox" name="consent" id="cf-consent" required />
+      <span>By submitting this form, I consent to be contacted by Aravian Financial LLC via email, phone, and text message regarding my mortgage inquiry. Message and data rates may apply. I understand I may opt out at any time. <span class="req">*</span></span>
+    </label>
+  </div>
+  <div class="form-result" id="contactResult"></div>
+  <button type="submit" class="form-submit">Send Message &rarr;</button>
+</form></div>
     </div>
   </div>
 
@@ -488,14 +611,14 @@ footer { background: #070707; border-top: 1px solid var(--border); padding: 3.5r
   </div>
   <div class="strip-actions">
     <a href="https://aravianfinancial.my1003app.com/566937/register" class="btn-primary">Begin Application</a>
-    <a href="loan-programs.html" class="btn-ghost">View Loan Programs</a>
+    <a href="programs.html" class="btn-primary">View Loan Programs</a>
   </div>
 </div>
 
 <!-- CTA BAND -->
 <div class="cta-band">
   <h2 class="cta-band-title">Questions about a specific<br />loan program?</h2>
-  <a href="loan-programs.html" class="btn-dark">Explore Loan Programs</a>
+  <a href="programs.html" class="btn-dark">Explore Loan Programs</a>
 </div>
 
 <!-- FOOTER -->
@@ -523,12 +646,12 @@ footer { background: #070707; border-top: 1px solid var(--border); padding: 3.5r
     <div>
       <div class="footer-col-title">Loan Programs</div>
       <ul class="footer-links">
-        <li><a href="loan-programs.html#conventional">Conventional</a></li>
-        <li><a href="loan-programs.html#fha">FHA</a></li>
-        <li><a href="loan-programs.html#va">VA</a></li>
-        <li><a href="loan-programs.html#usda">USDA</a></li>
-        <li><a href="loan-programs.html#jumbo">Jumbo</a></li>
-        <li><a href="loan-programs.html#nonqm">Non-QM &amp; More</a></li>
+        <li><a href="lp-conventional.html">Conventional</a></li>
+        <li><a href="lp-fha.html">FHA</a></li>
+        <li><a href="lp-va.html">VA</a></li>
+        <li><a href="lp-usda.html">USDA</a></li>
+        <li><a href="lp-jumbo.html">Jumbo</a></li>
+        <li><a href="lp-nonqm.html">Non-QM &amp; More</a></li>
       </ul>
     </div>
   </div>
@@ -546,7 +669,7 @@ footer { background: #070707; border-top: 1px solid var(--border); padding: 3.5r
       Aravian Financial LLC | Company NMLS #2691016 | Kris Syevens NMLS #566937 | Licensed in the State of Texas.<br />
       This is not a commitment to lend or an offer to enter into an agreement. Not all applicants will qualify. Information, rates, and programs are subject to change without notice. All products are subject to credit and property approval. Other restrictions and limitations may apply. Aravian Financial LLC is an Equal Housing Lender.
     </p>
-    <p class="footer-copy">&copy; 2025 Aravian Financial LLC. All rights reserved.</p>
+    <p class="footer-copy">&copy; <span class="copy-year"></span> Aravian Financial LLC. All rights reserved.</p>
   </div>
 </footer>
 
@@ -591,12 +714,32 @@ if (ham && navLinks) {
   });
 }
 </script>
-<script src="https://viato.ai/embed.js"></script>
 <script>
-  ViatoForms.popup('abe72926-94cc-4783-ada9-57d440f7c244', {
-    primaryColor: '#b8a98a',
-    hideViatoBranding: true
-  });
-</script>
+  // Web3Forms contact form handler
+  document.getElementById('contactForm')?.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const btn = this.querySelector('.form-submit');
+    const result = document.getElementById('contactResult');
+    btn.textContent = 'Sending...'; btn.disabled = true;
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST', body: new FormData(this)
+      });
+      const data = await res.json();
+      if (data.success) {
+        result.className = 'form-result success';
+        result.textContent = 'Thank you! We\'ll be in touch within 1 business day.';
+        this.reset();
+      } else {
+        result.className = 'form-result error';
+        result.textContent = 'Something went wrong. Please try again or call us directly.';
+      }
+    } catch {
+      result.className = 'form-result error';
+      result.textContent = 'Something went wrong. Please try again or call us directly.';
+    }
+    btn.textContent = 'Send Message →'; btn.disabled = false;
+  });</script>
+<script>document.querySelectorAll(".copy-year").forEach(el => el.textContent = new Date().getFullYear());</script>
 </body>
 </html>

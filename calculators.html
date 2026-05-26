@@ -266,6 +266,15 @@
     .nav-logo-img { height: 33px !important; }
   }
 
+
+  /* ── AUDIT FIXES: LEGAL FOOTER LINKS ── */
+  @media (max-width: 768px) {
+    .footer-legal-links {
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .footer-legal-links span { display: none; }
+  }
 </style>
 </head>
 <body>
@@ -277,7 +286,7 @@
     <li><a href="index.html">Home</a></li>
     <li><a href="about.html">About</a></li>
     <li><a href="programs.html">Loan Programs</a></li>
-    <li><a href="calculators.html">Calculators</a></li>
+    <li><a href="calculators.html" class="active">Calculators</a></li>
     <li><a href="contact.html">Contact</a></li>
   </ul>
   <a href="https://aravianfinancial.my1003app.com/566937/register" class="nav-apply-btn">Apply Now</a>
@@ -745,7 +754,7 @@
       <span>|</span>
       <a href="https://www.nmlsconsumeraccess.org/" target="_blank" rel="noopener noreferrer">NMLS Consumer Access</a>
     </div>
-    <p class="footer-copy">&copy; 2025 Aravian Financial LLC. All rights reserved.</p>
+    <p class="footer-copy">&copy; <span class="copy-year"></span> Aravian Financial LLC. All rights reserved.</p>
   </div>
   <p class="footer-disc">Aravian Financial LLC | Company NMLS #2691016 | Kris Syevens NMLS #566937 | Licensed in the State of Texas. Equal Housing Lender.<br />
   Calculator results are estimates for informational purposes only and do not constitute a loan offer, commitment to lend, or guarantee of any specific terms. Actual loan terms are subject to credit approval, property appraisal, and lender guidelines.</p>
@@ -1177,12 +1186,6 @@ function calcBuydown() {
 // Workaround: JS template literal can't embed CSS var inline easily
 const var_accent = '#b8a98a';
 </script>
-<script src="https://viato.ai/embed.js"></script>
-<script>
-  ViatoForms.popup('abe72926-94cc-4783-ada9-57d440f7c244', {
-    primaryColor: '#b8a98a',
-    hideViatoBranding: true
-  });
-</script>
+<script>document.querySelectorAll(".copy-year").forEach(el => el.textContent = new Date().getFullYear());</script>
 </body>
 </html>

@@ -28,7 +28,7 @@
   .page-title { font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 300; color: var(--white); line-height: 1.1; letter-spacing: -0.01em; margin-bottom: 1rem; }
   .page-updated { font-size: 0.7rem; letter-spacing: 0.12em; color: var(--silver); text-transform: uppercase; font-weight: 500; }
 
-  .content-wrap { max-width: 820px; padding: 4rem; }
+  .content-wrap { max-width: 820px; padding: 4rem; margin-left: auto; margin-right: auto; }
   .content-section { margin-bottom: 3rem; padding-bottom: 3rem; border-bottom: 1px solid var(--border); }
   .content-section:last-child { border-bottom: none; }
   .content-h2 { font-size: 0.78rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--white); font-weight: 600; margin-bottom: 1.25rem; }
@@ -87,30 +87,7 @@
   .calc-strip-inner,
   .footer-inner { max-width: 1440px; margin-left: auto; margin-right: auto; }
 
-  @media (min-width: 1440px) {
-    /* Lock all section padding content to 1440px */
-    section > *:not(.hero-bg):not(.hero-grid):not(.hero-glow):not(.hero-photo-bg):not(.page-header-bg):not(.page-header-overlay),
-    .page-header-inner,
-    .intent-toggle-wrap .tabs,
-    .calc-panels,
-    .tabs-wrap {
-      max-width: 1440px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    nav {
-      max-width: 100%;
-    }
-    .nav-links {
-      gap: 2rem;
-    }
-    /* Constrain section padding so content doesn't stretch */
-    section { padding-left: calc((100vw - 1440px) / 2 + 4rem); padding-right: calc((100vw - 1440px) / 2 + 4rem); }
-    footer { padding-left: calc((100vw - 1440px) / 2 + 4rem); padding-right: calc((100vw - 1440px) / 2 + 4rem); }
-    .page-header { padding-left: calc((100vw - 1440px) / 2 + 4rem); padding-right: calc((100vw - 1440px) / 2 + 4rem); }
-    .cta-band { padding-left: calc((100vw - 1440px) / 2 + 4rem); padding-right: calc((100vw - 1440px) / 2 + 4rem); }
-    nav { padding-left: calc((100vw - 1440px) / 2 + 4rem); padding-right: calc((100vw - 1440px) / 2 + 4rem); }
-  }
+  
 
   
   /* ── 1140px–1024px: tighten nav before collapse ── */
@@ -142,6 +119,38 @@
     .nav-logo-img { height: 33px !important; }
   }
 
+
+  @media (max-width: 768px) {
+    .footer-legal-links { flex-direction: column; gap: 0.5rem; }
+    .footer-legal-links span { display: none; }
+  }
+  
+
+  /* Legal pages — content max-width lock */
+  @media (min-width: 1440px) {
+    nav {
+      padding-left: calc((100vw - 1440px) / 2 + 4rem);
+      padding-right: calc((100vw - 1440px) / 2 + 4rem);
+    }
+    .page-header {
+      padding-left: calc((100vw - 1440px) / 2 + 4rem);
+      padding-right: calc((100vw - 1440px) / 2 + 4rem);
+    }
+    footer {
+      padding-left: calc((100vw - 1440px) / 2 + 4rem);
+      padding-right: calc((100vw - 1440px) / 2 + 4rem);
+    }
+  }
+  .content-inner,
+  .legal-inner,
+  .legal-content,
+  .page-body,
+  .content-wrap {
+    max-width: 1440px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+  }
 </style>
 </head>
 <body>
@@ -220,7 +229,7 @@
       <span>|</span>
       <a href="https://www.nmlsconsumeraccess.org/" target="_blank" rel="noopener noreferrer">NMLS Consumer Access</a>
     </div>
-    <p class="footer-copy">&copy; 2025 Aravian Financial LLC. All rights reserved.</p>
+    <p class="footer-copy">&copy; <span class="copy-year"></span> Aravian Financial LLC. All rights reserved.</p>
   </div>
   <p class="footer-disc">Aravian Financial LLC | Company NMLS #2691016 | Kris Syevens NMLS #566937 | Licensed in the State of Texas. Equal Housing Lender.</p>
 </footer>
@@ -264,12 +273,6 @@
   });
   }
 </script>
-<script src="https://viato.ai/embed.js"></script>
-<script>
-  ViatoForms.popup('abe72926-94cc-4783-ada9-57d440f7c244', {
-    primaryColor: '#b8a98a',
-    hideViatoBranding: true
-  });
-</script>
+<script>document.querySelectorAll(".copy-year").forEach(el => el.textContent = new Date().getFullYear());</script>
 </body>
 </html>

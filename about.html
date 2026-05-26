@@ -248,6 +248,23 @@ footer { background: #070707; border-top: 1px solid var(--border); padding: 3.5r
     .nav-logo-img { height: 33px !important; }
   }
 
+
+  /* ── AUDIT FIXES: LEGAL FOOTER LINKS ── */
+  @media (max-width: 768px) {
+    .footer-legal-links {
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .footer-legal-links span { display: none; }
+  }
+  /* Headshot responsive fix — prevent face cutoff 740-900px */
+  @media (max-width: 900px) and (min-width: 741px) {
+    .about-hero-img,
+    .hero-photo img,
+    .kris-hero-img {
+      object-position: center 10% !important;
+    }
+  }
 </style>
 </head>
 <body>
@@ -284,7 +301,7 @@ footer { background: #070707; border-top: 1px solid var(--border); padding: 3.5r
     </div>
     <div class="hero-actions">
       <a href="https://aravianfinancial.my1003app.com/566937/register" class="btn-primary">Apply Now</a>
-      <a href="contact.html" class="btn-ghost">Get in Touch</a>
+      <a href="contact.html" class="btn-primary">Get in Touch</a>
     </div>
   </div>
 </div>
@@ -429,7 +446,7 @@ footer { background: #070707; border-top: 1px solid var(--border); padding: 3.5r
       <p class="contact-cta-sub">Whether you're just starting to explore your options or ready to submit an application, Kris is available to walk you through every step of the process — personally.</p>
       <div style="display:flex;gap:1rem;flex-wrap:wrap;">
         <a href="https://aravianfinancial.my1003app.com/566937/register" class="btn-primary">Start Your Application</a>
-        <a href="loan-programs.html" class="btn-ghost">View Loan Programs</a>
+        <a href="programs.html" class="btn-primary">View Loan Programs</a>
       </div>
     </div>
   </div>
@@ -466,12 +483,12 @@ footer { background: #070707; border-top: 1px solid var(--border); padding: 3.5r
     <div>
       <div class="footer-col-title">Loan Programs</div>
       <ul class="footer-links">
-        <li><a href="loan-programs.html#conventional">Conventional</a></li>
-        <li><a href="loan-programs.html#fha">FHA</a></li>
-        <li><a href="loan-programs.html#va">VA</a></li>
-        <li><a href="loan-programs.html#usda">USDA</a></li>
-        <li><a href="loan-programs.html#jumbo">Jumbo</a></li>
-        <li><a href="loan-programs.html#nonqm">Non-QM &amp; More</a></li>
+        <li><a href="lp-conventional.html">Conventional</a></li>
+        <li><a href="lp-fha.html">FHA</a></li>
+        <li><a href="lp-va.html">VA</a></li>
+        <li><a href="lp-usda.html">USDA</a></li>
+        <li><a href="lp-jumbo.html">Jumbo</a></li>
+        <li><a href="lp-nonqm.html">Non-QM &amp; More</a></li>
       </ul>
     </div>
   </div>
@@ -489,7 +506,7 @@ footer { background: #070707; border-top: 1px solid var(--border); padding: 3.5r
       Aravian Financial LLC | Company NMLS #2691016 | Kris Syevens NMLS #566937 | Licensed in the State of Texas.<br />
       This is not a commitment to lend or an offer to enter into an agreement. Not all applicants will qualify. Information, rates, and programs are subject to change without notice. All products are subject to credit and property approval. Other restrictions and limitations may apply. Aravian Financial LLC is an Equal Housing Lender.
     </p>
-    <p class="footer-copy">&copy; 2025 Aravian Financial LLC. All rights reserved.</p>
+    <p class="footer-copy">&copy; <span class="copy-year"></span> Aravian Financial LLC. All rights reserved.</p>
   </div>
 </footer>
 
@@ -534,12 +551,6 @@ if (ham && navLinks) {
   });
 }
 </script>
-<script src="https://viato.ai/embed.js"></script>
-<script>
-  ViatoForms.popup('abe72926-94cc-4783-ada9-57d440f7c244', {
-    primaryColor: '#b8a98a',
-    hideViatoBranding: true
-  });
-</script>
+<script>document.querySelectorAll(".copy-year").forEach(el => el.textContent = new Date().getFullYear());</script>
 </body>
 </html>

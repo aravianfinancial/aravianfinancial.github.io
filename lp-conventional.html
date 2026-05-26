@@ -35,7 +35,7 @@ body { background: var(--off-black); color: var(--off-white); font-family: var(-
 .lp-hero { padding: 9rem 4rem 6rem; background: var(--off-black); position: relative; overflow: hidden; }
 .lp-hero-grid { position: absolute; inset: 0; background-image: linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px); background-size: 60px 60px; opacity: 0.18; }
 .lp-hero-glow { position: absolute; top: -20%; right: -10%; width: 50vw; height: 50vw; border-radius: 50%; background: radial-gradient(circle, rgba(184,169,138,0.07) 0%, transparent 70%); }
-.lp-hero-inner { position: relative; z-index: 2; max-width: 860px; margin: 0 auto; text-align: center; }
+.lp-hero-inner { position: relative; z-index: 2; max-width: 860px; margin: 0 auto; text-align: left; }
 .hero-tag { font-size: 0.68rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--accent); font-weight: 700; margin-bottom: 1rem; display: block; }
 .hero-badge { display: inline-block; background: rgba(184,169,138,0.12); border: 1px solid rgba(184,169,138,0.3); color: var(--accent); font-size: 0.65rem; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 700; padding: 0.3rem 0.85rem; margin-bottom: 1.5rem; }
 .lp-hero h1 { font-size: clamp(2.8rem, 5.5vw, 4.5rem); font-weight: 700; color: var(--white); line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 1.5rem; }
@@ -43,7 +43,7 @@ body { background: var(--off-black); color: var(--off-white); font-family: var(-
 
 /* HERO STATS */
 .hero-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); max-width: 600px; margin: 0 auto 3rem; }
-.hero-stat { background: var(--dark); padding: 1.5rem 1.75rem; text-align: center; }
+.hero-stat { background: var(--dark); padding: 1.5rem 1.75rem; text-align: left; }
 .hero-stat-label { font-size: 0.62rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--silver); font-weight: 600; margin-bottom: 0.4rem; opacity: 0.6; }
 .hero-stat-val { font-size: 1.75rem; font-weight: 700; color: var(--accent); letter-spacing: -0.02em; }
 
@@ -136,6 +136,104 @@ footer { background: #070707; border-top: 1px solid var(--border); padding: 2.5r
   .kris-inner { flex-direction: column; gap: 1.5rem; }
   .popup-field-row { grid-template-columns: 1fr; }
 }
+
+  /* ── WEB3FORMS NATIVE FORM ── */
+  .w3f-wrap { display: flex; flex-direction: column; gap: 0; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+  .form-field { display: flex; flex-direction: column; margin-bottom: 1rem; }
+  .form-field label {
+    font-size: 0.65rem; font-weight: 700; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--silver); opacity: 0.75;
+    margin-bottom: 0.4rem;
+  }
+  .req { color: var(--accent); }
+  .form-field input[type="text"],
+  .form-field input[type="email"],
+  .form-field input[type="tel"],
+  .form-field select,
+  .form-field textarea {
+    background: #222; border: 1px solid var(--border);
+    color: var(--white); font-family: var(--font);
+    font-size: 0.95rem; padding: 0.75rem 1rem;
+    outline: none; transition: border-color 0.2s;
+    border-radius: 0; appearance: none; -webkit-appearance: none;
+    width: 100%;
+  }
+  .form-field input:focus,
+  .form-field select:focus,
+  .form-field textarea:focus { border-color: var(--accent); }
+  .form-field input::placeholder,
+  .form-field textarea::placeholder { color: #555; }
+  .form-field textarea { resize: vertical; min-height: 100px; }
+  .form-field select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23b8a98a' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+    background-repeat: no-repeat; background-position: right 1rem center;
+    padding-right: 2.5rem;
+  }
+  .form-consent { margin-bottom: 1.25rem; }
+  .consent-label { display: flex; align-items: flex-start; gap: 0.75rem; cursor: pointer; }
+  .consent-label input[type="checkbox"] {
+    width: 16px; height: 16px; min-width: 16px; margin-top: 3px;
+    accent-color: var(--accent); cursor: pointer;
+    background: #222; border: 1px solid var(--border);
+  }
+  .consent-label span {
+    font-size: 0.75rem; color: var(--silver); line-height: 1.7;
+    opacity: 0.7; text-transform: none; letter-spacing: 0; font-weight: 400;
+  }
+  .form-submit {
+    background: var(--accent); color: var(--off-black);
+    border: none; padding: 0.95rem 2rem; font-family: var(--font);
+    font-size: 0.82rem; font-weight: 700; letter-spacing: 0.14em;
+    text-transform: uppercase; cursor: pointer; width: 100%;
+    transition: background 0.2s; border-radius: 0;
+  }
+  .form-submit:hover { background: var(--accent-light); }
+  .form-result {
+    font-size: 0.88rem; padding: 0.75rem 1rem; margin-bottom: 0.75rem;
+    display: none; border-radius: 0;
+  }
+  .form-result.success { background: rgba(184,169,138,0.15); color: var(--accent); border: 1px solid var(--accent); display: block; }
+  .form-result.error { background: rgba(224,112,112,0.12); color: #e07070; border: 1px solid #e07070; display: block; }
+  @media (max-width: 600px) {
+    .form-row { grid-template-columns: 1fr; }
+  }
+  /* LP page audit fixes */
+  /* CTA band max-width */
+  @media (min-width: 1440px) {
+    .lp-hero { padding-left: calc((100vw - 1440px) / 2 + 4rem); padding-right: calc((100vw - 1440px) / 2 + 4rem); }
+    .why-section { padding-left: calc((100vw - 1440px) / 2 + 4rem); padding-right: calc((100vw - 1440px) / 2 + 4rem); }
+    .kris-strip { padding-left: calc((100vw - 1440px) / 2 + 4rem); padding-right: calc((100vw - 1440px) / 2 + 4rem); }
+    .cta-band { padding-left: calc((100vw - 1440px) / 2 + 4rem); padding-right: calc((100vw - 1440px) / 2 + 4rem); }
+    .lp-nav { padding-left: calc((100vw - 1440px) / 2 + 4rem); padding-right: calc((100vw - 1440px) / 2 + 4rem); }
+    footer { padding-left: calc((100vw - 1440px) / 2 + 4rem); padding-right: calc((100vw - 1440px) / 2 + 4rem); }
+    .benefits-section { padding-left: calc((100vw - 1440px) / 2 + 4rem); padding-right: calc((100vw - 1440px) / 2 + 4rem); }
+    .who-section { padding-left: calc((100vw - 1440px) / 2 + 4rem); padding-right: calc((100vw - 1440px) / 2 + 4rem); }
+  }
+  /* Below 400px — logo 25% smaller */
+  @media (max-width: 400px) {
+    .nav-logo-img { height: 30px !important; }
+    .footer-logo-img { height: 30px !important; }
+  }
+  /* Legal footer responsive */
+  @media (max-width: 768px) {
+    .footer-legal-links { flex-direction: column; gap: 0.5rem; }
+    .footer-legal-links span { display: none; }
+  }
+  /* Form card */
+  .lp-form-card {
+    background: var(--dark);
+    border: 1px solid var(--border);
+    padding: 2.5rem;
+    position: sticky;
+    top: 7rem;
+  }
+  .lp-form-card-eyebrow { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); font-weight: 700; margin-bottom: 0.75rem; }
+  .lp-form-card-title { font-size: 1.35rem; font-weight: 700; color: var(--white); letter-spacing: -0.01em; line-height: 1.2; margin-bottom: 0.5rem; }
+  .lp-form-card-sub { font-size: 0.88rem; color: var(--silver); line-height: 1.75; margin-bottom: 1.5rem; opacity: 0.8; }
+  .form-trust { margin-top: 1.25rem; padding-top: 1.25rem; border-top: 1px solid var(--border); display: flex; flex-direction: column; gap: 0.4rem; }
+  .trust-item { font-size: 0.72rem; color: var(--silver); opacity: 0.6; display: flex; align-items: center; gap: 0.5rem; }
+  .trust-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
 </style>
 </head>
 <body>
@@ -148,9 +246,16 @@ footer { background: #070707; border-top: 1px solid var(--border); padding: 2.5r
   <div class="lp-nav-right">
     <a href="programs.html" class="lp-nav-back">&larr; All Programs</a>
     <a href="tel:+12817163215" class="lp-nav-phone">281-716-3215</a>
-    <button class="btn-nav" onclick="openPopup()">Get My Rate</button>
+    <button class="btn-nav">Get My Rate</button>
+  
   </div>
+  <button class="lp-nav-hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
 </nav>
+<div class="lp-mobile-menu" id="lpMobileMenu">
+  <a href="programs.html">All Programs</a>
+  <a href="tel:+12817163215">281-716-3215</a>
+  <a href="https://aravianfinancial.my1003app.com/566937/register" class="lp-mobile-apply">Apply Now</a>
+</div>
 
 <!-- HERO -->
 <div class="lp-hero">
@@ -167,7 +272,7 @@ footer { background: #070707; border-top: 1px solid var(--border); padding: 2.5r
       <div class="hero-stat"><div class="hero-stat-label">Loan Terms</div><div class="hero-stat-val">10–30 Yr</div></div>
     </div>
     <div class="hero-cta-group">
-      <button class="btn-primary" onclick="openPopup()">Get My Rate &rarr;</button>
+      <button class="btn-primary">Get My Rate &rarr;</button>
       <a href="contact.html" class="btn-ghost">Ask a Question</a>
     </div>
     <p class="hero-trust">No obligation &nbsp;&middot;&nbsp; Response within 1 business day &nbsp;&middot;&nbsp; NMLS #2691016</p>
@@ -234,7 +339,7 @@ footer { background: #070707; border-top: 1px solid var(--border); padding: 2.5r
         <div class="who-cta-eyebrow">Ready to Move Forward?</div>
         <div class="who-cta-title">Find Out What Rate You Qualify For.</div>
         <div class="who-cta-sub">Fill out a quick form and Kris will reach out personally — typically the same business day — with your options and a competitive rate quote.</div>
-        <button class="btn-primary" style="width:100%;" onclick="openPopup()">Get My Rate &rarr;</button>
+        <button class="btn-primary" style="width:100%;">Get My Rate &rarr;</button>
         <div class="who-cta-trust">
           <div class="trust-item"><span class="trust-dot"></span> Licensed Texas Mortgage Broker &nbsp;|&nbsp; NMLS #2691016</div>
           <div class="trust-item"><span class="trust-dot"></span> Kris Syevens NMLS #566937</div>
@@ -280,7 +385,7 @@ footer { background: #070707; border-top: 1px solid var(--border); padding: 2.5r
 <div class="cta-band">
   <h2 class="cta-band-title">Ready to get pre-approved<br />or have questions first?</h2>
   <div style="display:flex;gap:1rem;flex-wrap:wrap;">
-    <button class="btn-dark" onclick="openPopup()">Get My Rate</button>
+    <button class="btn-dark">Get My Rate</button>
     <a href="contact.html" style="background:transparent;color:var(--off-black);border:2px solid var(--off-black);padding:0.9rem 2.4rem;font-family:var(--font);font-size:0.78rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;display:inline-block;">Contact Kris</a>
   </div>
 </div>
@@ -294,30 +399,46 @@ footer { background: #070707; border-top: 1px solid var(--border); padding: 2.5r
     <a href="https://www.nmlsconsumeraccess.org/" target="_blank" rel="noopener noreferrer">NMLS Consumer Access</a>
   </div>
   <p class="footer-legal">Aravian Financial LLC | Company NMLS #2691016 | Kris Syevens NMLS #566937 | Licensed in the State of Texas. This is not a commitment to lend. Not all applicants will qualify. All products subject to credit and property approval. Equal Housing Lender.</p>
-  <p class="footer-copy">&copy; 2025 Aravian Financial LLC. All rights reserved.</p>
+  <p class="footer-copy">&copy; <span class="copy-year"></span> Aravian Financial LLC. All rights reserved.</p>
 </footer>
 
 <!-- VIATO POPUP EMBED -->
-<script src="https://viato.ai/embed.js"></script>
 <script>
-  ViatoForms.popup('9c606831-3d1f-46dd-bd1b-7a9d0be30b54', {
-    primaryColor: '#b8a98a',
-    hideViatoBranding: true
+  // Web3Forms LP form handler
+  document.getElementById('lpForm')?.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const btn = this.querySelector('.form-submit');
+    const result = document.getElementById('lpResult');
+    btn.textContent = 'Sending...'; btn.disabled = true;
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST', body: new FormData(this)
+      });
+      const data = await res.json();
+      if (data.success) {
+        result.className = 'form-result success';
+        result.textContent = 'Thank you! Kris will reach out personally within 1 business day.';
+        this.reset();
+      } else {
+        result.className = 'form-result error';
+        result.textContent = 'Something went wrong. Please try again or call us directly.';
+      }
+    } catch {
+      result.className = 'form-result error';
+      result.textContent = 'Something went wrong. Please try again or call us directly.';
+    }
+    btn.textContent = 'Get My Rate →'; btn.disabled = false;
   });
-</script>
-
+  </script>
+<script>document.querySelectorAll(".copy-year").forEach(el => el.textContent = new Date().getFullYear());</script>
 <script>
-function openPopup() {
-  if (typeof ViatoForms !== 'undefined') {
-    ViatoForms.open('9c606831-3d1f-46dd-bd1b-7a9d0be30b54');
-  }
-}
-</script>
-<script>
-  ViatoForms.popup('abe72926-94cc-4783-ada9-57d440f7c244', {
-    primaryColor: '#b8a98a',
-    hideViatoBranding: true
-  });
-</script>
+  // LP hamburger nav
+  const lpHam = document.querySelector('.lp-nav-hamburger');
+  const lpMenu = document.getElementById('lpMobileMenu');
+  if (lpHam && lpMenu) {
+    lpHam.addEventListener('click', () => {
+      lpMenu.classList.toggle('open');
+    });
+  }</script>
 </body>
 </html>
